@@ -6,106 +6,125 @@ Use this as the build order for the first working package.
 
 ## Phase 1: Package Setup
 
-- create `package.json`
-- add TypeScript
-- add Vitest
-- add strict `tsconfig.json`
-- expose package entry from `src/index.ts`
+- [x] create `package.json`
+- [x] add TypeScript
+- [x] add Vitest
+- [x] add strict `tsconfig.json`
+- [x] expose package entry from `src/index.ts`
 
 ## Phase 2: Types
 
-- `FlowRequest`
-- `FlowNode`
-- `FlowEdge`
-- `FlowResult`
-- `NodeResult`
-- `NodeDefinition`
-- `NodeHandler`
-- `NodeContext`
-- `ExecutionState`
-- `ExecutionStatus`
+- [x] `FlowRequest`
+- [x] `FlowNode`
+- [x] `FlowEdge`
+- [x] `FlowResult`
+- [x] `NodeResult`
+- [x] `NodeDefinition`
+- [x] `NodeHandler`
+- [x] `NodeContext`
+- [x] `ExecutionState`
+- [x] `ExecutionStatus`
+- [x] `ConnectionResolver`
 
 ## Phase 3: Registry
 
-- create `NodeRegistry`
-- support `registerNode`
-- support `registerNodes`
-- support `getNode`
-- reject duplicate node types
+- [x] create `NodeRegistry`
+- [x] support `registerNode`
+- [x] support `registerNodes`
+- [x] support `getNode`
+- [x] reject duplicate node types
 
 ## Phase 4: Validation
 
-- validate request shape
-- reject empty node list
-- reject duplicate node IDs
-- reject missing output node
-- reject edges with missing source node
-- reject edges with missing target node
-- reject unregistered node types
-- reject cycles
-- reject missing `input`, `nodes`, `edges`, or `output`
-- reject node missing `id`
-- reject node missing `type`
-- reject edge missing `from` or `to`
-- reject self-edges
-- reject multiple start nodes in v1
-- reject multiple outgoing edges in v1
-- reject multiple incoming edges in v1
-- reject disconnected nodes in v1
+- [x] validate request shape
+- [x] reject empty node list
+- [x] reject duplicate node IDs
+- [x] reject missing output node
+- [x] reject edges with missing source node
+- [x] reject edges with missing target node
+- [x] reject unregistered node types
+- [x] reject cycles
+- [x] reject missing `input`, `nodes`, `edges`, or `output`
+- [x] reject node missing `id`
+- [x] reject node missing `type`
+- [x] reject edge missing `from` or `to`
+- [x] reject self-edges
+- [x] reject multiple start nodes in v1
+- [x] reject multiple outgoing edges in v1
+- [x] reject multiple incoming edges in v1
+- [x] reject disconnected nodes in v1
 
 ## Phase 5: Execution
 
-- find start nodes
-- run start nodes with initial input
-- pass node output to connected next node
-- run nodes in topological order
-- store every node result
-- return selected output node result
-- stop cleanly when a node fails
-- reject unreachable output node
-- allow `undefined` node output
-- allow `null` node output
-- pass `undefined` config when config is omitted
-- generate one `runId` per `run()` call
+- [x] find start node
+- [x] run start node with initial input
+- [x] pass node output to connected next node
+- [x] run nodes in chain order
+- [x] store every node result
+- [x] return selected output node result
+- [x] stop cleanly when a node fails
+- [x] reject unreachable output node
+- [x] allow `undefined` node output
+- [x] allow `null` node output
+- [x] pass `undefined` config when config is omitted
+- [x] generate one `runId` per `run()` call
 
 ## Phase 6: Errors
 
-- create base `NodeFlowError`
-- create `ValidationError`
-- create `NodeExecutionError`
-- include node ID and node type in execution errors
+- [x] create base `NodeFlowError`
+- [x] create `ValidationError`
+- [x] create `NodeExecutionError`
+- [x] include node ID and node type in execution errors
 
 ## Phase 7: Tests
 
-- registry tests
-- validation tests
-- single-node flow test
-- linear flow test
-- async node test
-- failed node test
-- cycle rejection test
-- final output selection test
-- config passing test
-- context passing test
-- validation failure should run no nodes
-- invalid request shape test
-- missing node id/type tests
-- missing edge from/to tests
-- self-edge test
-- multiple start nodes test
-- multiple outgoing edges test
-- multiple incoming edges test
-- disconnected node test
-- undefined output test
-- null output test
-- runId consistency test
+- [x] registry tests
+- [x] validation tests
+- [x] single-node flow test
+- [x] linear flow test
+- [x] async node test
+- [x] failed node test
+- [x] cycle rejection test
+- [x] final output selection test
+- [x] config passing test
+- [x] context passing test
+- [x] validation failure should run no nodes
+- [x] invalid request shape test
+- [x] missing node id/type tests
+- [x] missing edge from/to tests
+- [x] self-edge test
+- [x] multiple start nodes test
+- [x] multiple outgoing edges test
+- [x] multiple incoming edges test
+- [x] disconnected node test
+- [x] undefined output test
+- [x] null output test
+- [x] runId consistency test
 
 ## Phase 8: Docs
 
-- update README install section
-- add API examples
-- add package usage example
-- add limitations section
+- [ ] update README install section after publish
+- [x] add API examples
+- [x] add package usage example
+- [x] add limitations section
+
+## Verification
+
+- [x] `npm install`
+- [x] `npm run typecheck`
+- [x] `npm test`
+- [x] `npm run build`
+- [x] `npm audit --omit=dev`
+
+See [V1 Validation Report](VALIDATION_REPORT.md).
+
+## Publishing
+
+- [x] `npm pack --dry-run`
+- [x] `npm publish --access public`
+- [x] `npm view nodrica`
+
+See [Publishing Guide](PUBLISHING.md).
 
 ## Reference Docs
 
@@ -114,3 +133,5 @@ Use this as the build order for the first working package.
 - [API Design](API_DESIGN.md)
 - [Logic Design](LOGIC_DESIGN.md)
 - [Test Plan](TEST_PLAN.md)
+- [V1 Validation Report](VALIDATION_REPORT.md)
+- [Publishing Guide](PUBLISHING.md)

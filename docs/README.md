@@ -12,6 +12,8 @@ flowchart TD
     D --> E[API Design]
     E --> F[Test Plan]
     F --> G[Implementation Checklist]
+    G --> H[V1 Validation Report]
+    H --> I[Publishing Guide]
 ```
 
 ## Read In This Order
@@ -25,6 +27,8 @@ flowchart TD
 | 4 | [API Design](API_DESIGN.md) | Review the public package API and TypeScript shapes. |
 | 5 | [Test Plan](TEST_PLAN.md) | See the expected behavior tests. |
 | 6 | [Implementation Checklist](IMPLEMENTATION_CHECKLIST.md) | Build the package in the right order. |
+| 7 | [V1 Validation Report](VALIDATION_REPORT.md) | Confirm the verified v1 test/build result. |
+| 8 | [Publishing Guide](PUBLISHING.md) | Release and verify npm package versions. |
 
 ## Project Aim
 
@@ -60,3 +64,5 @@ flowchart LR
 - [API Design](API_DESIGN.md)
 - [Test Plan](TEST_PLAN.md)
 - [Implementation Checklist](IMPLEMENTATION_CHECKLIST.md)
+- [V1 Validation Report](VALIDATION_REPORT.md)
+- [Publishing Guide](PUBLISHING.md)

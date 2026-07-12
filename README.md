@@ -88,6 +88,27 @@ Future:
 
 Read more: [Logic Design](docs/LOGIC_DESIGN.md)
 
+## Current Status
+
+Implemented:
+
+- TypeScript package skeleton
+- core public `NodeFlowEngine`
+- node registry
+- flow validator
+- linear chain executor
+- node executor
+- serializable errors
+- v1 test suite
+- typecheck/test/build validation
+
+Pending:
+
+- push latest code/docs to GitHub
+
+Validation: [V1 Validation Report](docs/VALIDATION_REPORT.md)
+Publishing: [Publishing Guide](docs/PUBLISHING.md)
+
 ## Example Flow
 
 ```ts
@@ -199,4 +220,5 @@ Start here: [Documentation Map](docs/README.md)
 - [API Design](docs/API_DESIGN.md)
 - [Test Plan](docs/TEST_PLAN.md)
 - [Implementation Checklist](docs/IMPLEMENTATION_CHECKLIST.md)
-
+- [V1 Validation Report](docs/VALIDATION_REPORT.md)
+- [Publishing Guide](docs/PUBLISHING.md)
