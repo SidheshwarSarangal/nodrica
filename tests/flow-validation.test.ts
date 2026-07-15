@@ -133,7 +133,7 @@ describe("flow validation", () => {
     expect(cycle.success).toBe(false);
   });
 
-  it("rejects multiple starts, branching, merging, and disconnected nodes in v1", async () => {
+  it("rejects multiple starts, ambiguous branching, and disconnected graphs", async () => {
     const multipleStarts = await createTextEngine().run({
       input: {},
       nodes: [
@@ -158,7 +158,7 @@ describe("flow validation", () => {
       output: "n2"
     });
 
-    const merging = await createTextEngine().run({
+    const mergeWithMultipleStarts = await createTextEngine().run({
       input: {},
       nodes: [
         { id: "n1", type: "return" },
@@ -185,7 +185,7 @@ describe("flow validation", () => {
 
     expect(multipleStarts.success).toBe(false);
     expect(branching.success).toBe(false);
-    expect(merging.success).toBe(false);
+    expect(mergeWithMultipleStarts.success).toBe(false);
     expect(disconnected.success).toBe(false);
   });
 });

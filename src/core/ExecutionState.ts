@@ -14,4 +14,8 @@ export class ExecutionState {
   toRecord(): Record<string, NodeResult> {
     return Object.fromEntries(this.results);
   }
+
+  hasNodeResult(nodeId: string): boolean {
+    return this.results.has(nodeId);
+  }
 }

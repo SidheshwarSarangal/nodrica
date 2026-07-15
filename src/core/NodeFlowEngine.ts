@@ -1,5 +1,5 @@
 import { toSerializableError, ValidationError } from "../errors";
-import type { FlowRequest, FlowResult, NodeDefinition } from "../types";
+import type { FlowRequest, FlowResult, NodeDefinition, RunOptions } from "../types";
 import { createRunId } from "../utils/ids";
 import { FlowExecutor } from "./FlowExecutor";
 import { FlowValidator } from "./FlowValidator";
@@ -26,7 +26,7 @@ export class NodeFlowEngine {
     return this;
   }
 
-  async run(request: FlowRequest): Promise<FlowResult> {
+  async run(request: FlowRequest, options: RunOptions = {}): Promise<FlowResult> {
     const runId = createRunId();
     const validation = this.validator.validate(request);
 
@@ -42,6 +42,6 @@ export class NodeFlowEngine {
     }
 
     const plan = this.validator.buildChainPlan(request);
-    return this.executor.execute(request, plan, runId);
+    return this.executor.execute(request, plan, runId, options);
   }
 }

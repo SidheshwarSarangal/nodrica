@@ -9,7 +9,10 @@ export { ResultBuilder } from "./core/ResultBuilder";
 export { NodeFlowError, NodeExecutionError, ValidationError } from "./errors";
 export type {
   ChainPlan,
+  EdgeCondition,
+  ExecutionEvent,
   ExecutionStatus,
+  FailureInput,
   FlowEdge,
   FlowNode,
   FlowRequest,
@@ -18,6 +21,8 @@ export type {
   NodeDefinition,
   NodeHandler,
   NodeResult,
+  RetryPolicy,
+  RunOptions,
   SerializableError,
   ValidationIssue,
   ValidationResult

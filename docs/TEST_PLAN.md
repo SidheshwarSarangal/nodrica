@@ -1,5 +1,9 @@
 # Test Plan
 
+> This is the original v1 validation plan. The implemented v2 reliability cases
+> are documented in [V2 Reliable Orchestration](V2_ORCHESTRATION.md) and covered
+> by `tests/orchestration-v2.test.ts`.
+
 [Docs Home](README.md) | [Previous: API Design](API_DESIGN.md) | [Next: Implementation Checklist](IMPLEMENTATION_CHECKLIST.md)
 
 This is the minimum test plan for the first working implementation.

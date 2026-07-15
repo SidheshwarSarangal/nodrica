@@ -56,9 +56,9 @@ custom function node
 
 Read more: [Algorithm Reference](docs/ALGORITHM_REFERENCE.md)
 
-## V1 Scope
+## V2 Scope
 
-Nodrica v1 focuses on one connected chain:
+Nodrica v2 keeps linear flows compatible and adds deterministic orchestration:
 
 ```mermaid
 flowchart LR
@@ -72,18 +72,21 @@ Included:
 
 - single-node flow
 - linear flow
-- graph validation
+- conditional branching and deterministic merges
+- explicit failure/fallback edges
+- opt-in bounded retries and backoff
+- per-node timeout and workflow cancellation
+- progress/result event hooks
+- strict acyclic graph and policy validation
 - async node handlers
 - selected output node
 - clean validation/execution errors
 
 Future:
 
-- branching
-- merging
-- retries
-- timeout
-- persistence
+- checkpoint identity and safe resume
+- parallel branch execution
+- distributed execution
 - visual editor
 
 Read more: [Logic Design](docs/LOGIC_DESIGN.md)
@@ -96,10 +99,10 @@ Implemented:
 - core public `NodeFlowEngine`
 - node registry
 - flow validator
-- linear chain executor
+- deterministic graph executor
 - node executor
 - serializable errors
-- v1 test suite
+- v1 compatibility and v2 orchestration test suites
 - typecheck/test/build validation
 
 Pending:
@@ -107,6 +110,7 @@ Pending:
 - push latest code/docs to GitHub
 
 Validation: [V1 Validation Report](docs/VALIDATION_REPORT.md)
+V2 contract: [Reliable orchestration](docs/V2_ORCHESTRATION.md)
 Publishing: [Publishing Guide](docs/PUBLISHING.md)
 
 ## Example Flow
@@ -182,15 +186,16 @@ Read more: [API Design](docs/API_DESIGN.md)
 
 ## Testing
 
-The first implementation should prove:
+The test suite proves:
 
 - validation failures run no nodes
 - single-node flows work
 - linear flows pass output forward
 - async nodes are awaited
-- failed nodes stop the flow
+- failed nodes stop or follow an explicit fallback
 - selected output node is returned
-- strict v1 edge cases are rejected
+- branching, merging, retry, timeout, cancellation, and events behave deterministically
+- unsafe or ambiguous configurations are rejected before execution
 
 Read more: [Test Plan](docs/TEST_PLAN.md)
 

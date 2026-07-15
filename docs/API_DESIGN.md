@@ -66,6 +66,7 @@ type FlowResult = {
   output?: unknown;
   nodeResults: Record<string, NodeResult>;
   error?: NodeFlowError;
+  runId: string;
 };
 ```
 
@@ -79,6 +80,8 @@ type NodeResult = {
   input?: unknown;
   output?: unknown;
   error?: NodeFlowError;
+  attempts: number;
+  durationMs: number;
 };
 ```
 
@@ -89,37 +92,42 @@ type NodeContext = {
   runId: string;
   nodeId: string;
   nodeType: string;
+  attempt: number;
+  maxAttempts: number;
+  signal: AbortSignal;
 };
 ```
 
-## V1 Input Passing Rule
+## Input Passing Rule
 
 ```text
 start node receives flow input
 next node receives previous node output
+failure node receives structured FailureInput
 selected output node becomes final output
 ```
 
-## First Version Limits
+## V2 Orchestration
 
-The first version should support:
+Version 2 adds:
 
-- single-node flow
-- linear flow
-- graph validation
-- async node handlers
-- final output selection
-- clean validation errors
-- clean execution errors
+- declarative conditional edges
+- explicit failure edges
+- deterministic branch merging
+- opt-in retry policies
+- per-node timeouts
+- cancellation and execution events through `run` options
 
-The first version does not need:
+Still deferred:
 
 - visual editor
-- persistence
-- retries
-- timeout
+- automatic checkpoint resume
+- parallel branches
 - distributed execution
 - built-in nodes
+
+See [V2 Reliable Orchestration](V2_ORCHESTRATION.md) for exact routing,
+retry, cancellation, and safety semantics.
 
 ## Documentation
 
@@ -128,3 +136,4 @@ The first version does not need:
 - [Logic Design](LOGIC_DESIGN.md)
 - [Test Plan](TEST_PLAN.md)
 - [Implementation Checklist](IMPLEMENTATION_CHECKLIST.md)
+- [V2 Reliable Orchestration](V2_ORCHESTRATION.md)

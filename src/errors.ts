@@ -78,11 +78,12 @@ export class NodeExecutionError extends NodeFlowError {
     options: {
       nodeId: string;
       nodeType: string;
+      code?: string;
       cause?: unknown;
     }
   ) {
     super(message, {
-      code: "NODE_EXECUTION_ERROR",
+      code: options.code ?? "NODE_EXECUTION_ERROR",
       nodeId: options.nodeId,
       nodeType: options.nodeType,
       cause: options.cause

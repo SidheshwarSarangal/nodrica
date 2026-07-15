@@ -1,5 +1,9 @@
 # Logic Design
 
+> This document records the original v1 linear model. For the current branching,
+> fallback, retry, timeout, cancellation, and event semantics, see
+> [V2 Reliable Orchestration](V2_ORCHESTRATION.md).
+
 [Docs Home](README.md) | [Previous: Algorithm Reference](ALGORITHM_REFERENCE.md) | [Next: API Design](API_DESIGN.md)
 
 This document defines the first working logic for Nodrica.
